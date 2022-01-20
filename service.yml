@@ -7,7 +7,22 @@ spec:
     - name: http
       port: 8161
       nodePort: 30060
+
+    - name: endpoint
+      port: 61616
   selector:
     app: fleetman-queue
-    release: "1"
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-tracker
+spec:
+  ports:
+    - name: http
+      port: 8080
+      nodePort: 30080
+  selector:
+    app: fleetman-tracker
   type: NodePort
